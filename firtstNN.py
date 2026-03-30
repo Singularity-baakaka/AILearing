@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-NEURONS = 500          # 隐藏层神经元数量
+NEURONS = 64          # 隐藏层神经元数量
 INPUT_SIZE = 1         # 输入层大小
 HIDDEN_SIZE = NEURONS  # 隐藏层大小
 OUTPUT_SIZE = 1        # 输出层大小
-EPOCHS = 1000          # 训练轮数
+EPOCHS = 5000        # 训练轮数
 LEARNING_RATE = 0.001  # 学习率
 
 
@@ -14,7 +14,7 @@ def gaussian_activation(x):
 
 def generate_training_data():
     x = np.arange(1, 10.1, 0.01)
-    y = np.sin(np.pi * x)+(np.sin(3 * np.pi * x))
+    y = np.sin(x) + np.sin(2*x)
     return x, y
 
 
