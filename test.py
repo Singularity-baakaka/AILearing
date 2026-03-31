@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # ====================== 核心：类脑神经元层 ======================
 class BioMLPLayer(nn.Module):
-    def __init__(self, in_dim, out_dim, alpha=0.99, eta=0.01):
+    def __init__(self, in_dim, out_dim, alpha=0.8, eta=0.1):
         super().__init__()
         # 控制sigmoid门控的可训练权重
         self.linear = nn.Linear(in_dim, out_dim)
@@ -59,7 +59,7 @@ class BioSinNet(nn.Module):
 
 # ====================== 损失函数 ======================
 def compute_loss(y_pred, y_true, model, 
-                 λ_stable=0.1, λ_sparse=1.2, λ_consist=0):
+                 λ_stable=0.1, λ_sparse=1.2, λ_consist=0.001):
     # 主任务损失
     loss_task = nn.MSELoss()(y_pred, y_true)
     
