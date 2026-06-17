@@ -38,7 +38,7 @@ class BioMLPLayer(nn.Module):
 
 # ====================== 双层类脑MLP ======================
 class BioSinNet(nn.Module):
-    def __init__(self, hidden_size=32):
+    def __init__(self, hidden_size=1024):
         super().__init__()
         self.layer1 = BioMLPLayer(1, hidden_size)
         self.layer2 = BioMLPLayer(hidden_size, hidden_size)
@@ -86,9 +86,9 @@ x_tensor = torch.from_numpy(x).unsqueeze(-1)
 y_tensor = torch.from_numpy(y).unsqueeze(-1)
 
 # ====================== 训练配置 ======================
-model = BioSinNet(hidden_size=32)
+model = BioSinNet(hidden_size=512)
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
-EPOCHS = 10000
+EPOCHS = 1000
 
 loss_curve = []
 task_loss_curve = []
